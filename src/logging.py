@@ -1,7 +1,8 @@
 import logging
 from enum import StrEnum
 
-LOG_FORMAT_DEBUG = "%(levelname)s:%(message)s:%(pathname)s:%(funcName)s:%(lineno)d"
+LOG_FORMAT_DEFAULT = "%(asctime)s %(levelname)s:%(message)s"
+LOG_FORMAT_DEBUG = "%(asctime)s %(levelname)s:%(message)s:%(pathname)s:%(funcName)s:%(lineno)d"
 
 
 class LogLevels(StrEnum):
@@ -19,8 +20,12 @@ def configure_logging(log_level: str = LogLevels.error, filename: str = None, fi
     if log_level not in log_levels:
         kwargs["level"] = LogLevels.error
 
+    kwargs["datefmt"] = "%Y-%m-%dT%H:%M:%S"
+
     if log_level == LogLevels.debug:
         kwargs["format"] = LOG_FORMAT_DEBUG
+    else:
+        kwargs["format"] = LOG_FORMAT_DEFAULT
 
     if filename:
         kwargs["filename"] = filename
