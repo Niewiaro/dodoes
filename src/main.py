@@ -2,8 +2,10 @@ import logging
 import os
 
 from dotenv import load_dotenv
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
 
+from .api import register_routes
+from .database.core import engine, Base
 from .logging import configure_logging, LogLevels
 
 load_dotenv()
@@ -19,14 +21,9 @@ logging.debug(f"Logging configuration: level={log_level}, filename={log_filename
 
 app = FastAPI()
 
+""" Only uncomment below to create new tables, 
+otherwise the tests will fail if not connected
+"""
+Base.metadata.create_all(bind=engine)
 
-@app.get("/")
-async def root(request: Request) -> dict:
-    logging.debug(f"Handling GET request for {request.url}")
-    return {"message": "Hello World"}
-
-
-@app.get("/hello/{name}")
-async def say_hello(name: str, request: Request) -> dict:
-    logging.debug(f"Handling GET request for {request.url} with name={name}")
-    return {"message": f"Hello {name}"}
+register_routes(app)
