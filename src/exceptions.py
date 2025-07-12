@@ -25,3 +25,8 @@ class PasswordMismatchError(UserError):
 class InvalidPasswordError(UserError):
     def __init__(self):
         super().__init__(status_code=401, detail="Current password is incorrect")
+
+
+class PasswordNotChangedError(UserError):
+    def __init__(self):
+        super().__init__(status_code=400, detail="Password was not changed")
