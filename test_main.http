@@ -1,11 +1,87 @@
-# Test your FastAPI endpoints
+### REGISTER
+POST http://localhost:8000/auth/register
+Content-Type: application/json
 
-GET http://127.0.0.1:8000/
-Accept: application/json
+{
+  "email": "test@example.com",
+  "first_name": "John",
+  "last_name": "Doe",
+  "password": "strongpassword123"
+}
 
 ###
 
-GET http://127.0.0.1:8000/hello/User
-Accept: application/json
+### LOGIN
+POST http://localhost:8000/auth/login
+Content-Type: application/x-www-form-urlencoded
+
+username=test@example.com&password=strongpassword123
 
 ###
+
+### GET CURRENT USER (needs token)
+GET http://localhost:8000/users/me
+Authorization: Bearer {{access_token}}
+
+###
+
+### CHANGE PASSWORD (needs token)
+PUT http://localhost:8000/users/change-password
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+{
+  "current_password": "strongpassword123",
+  "new_password": "newpassword456",
+  "new_password_confirm": "newpassword456"
+}
+
+###
+
+### GET TODOS (needs token)
+GET http://localhost:8000/todos/
+Authorization: Bearer {{access_token}}
+
+###
+
+### CREATE TODO (needs token)
+POST http://localhost:8000/todos/
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+{
+  "description": "Buy milk",
+  "due_date": "2025-07-13T20:00:00Z",
+  "priority": 2
+}
+
+###
+
+### GET TODO BY ID (needs token)
+GET http://localhost:8000/todos/{{todo_id}}
+Authorization: Bearer {{access_token}}
+
+###
+
+### UPDATE TODO (needs token)
+PUT http://localhost:8000/todos/{{todo_id}}
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+{
+  "description": "Buy oat milk",
+  "due_date": "2025-07-15T12:00:00Z",
+  "priority": 1
+}
+
+###
+
+### MARK TODO AS COMPLETE (needs token)
+PUT http://localhost:8000/todos/{{todo_id}}/complete
+Authorization: Bearer {{access_token}}
+
+###
+
+### DELETE TODO (needs token)
+DELETE http://localhost:8000/todos/{{todo_id}}
+Authorization: Bearer {{access_token}}
