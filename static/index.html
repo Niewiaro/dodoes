@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>DoDoes API – Interactive Docs</title>
+    <title>DoDoes API - Interactive Docs</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description"
-          content="Interactive API documentation for DoDoes – explore endpoints, test requests and view OpenAPI schema.">
+          content="Interactive API documentation for DoDoes - explore endpoints, test requests and view OpenAPI schema.">
     <meta name="keywords" content="DoDoes, API, documentation, OpenAPI, Swagger, Redoc, interactive docs">
     <meta name="author" content="Jakub Niewiarowski">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -81,16 +81,380 @@
                         </span>
                     </a>
                 </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-list"></i> Navigation
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="#intro"><i class="bi bi-lightning-charge"></i> Intro</a></li>
+                        <li><a class="dropdown-item" href="#benefits"><i class="bi bi-gift"></i> Benefits</a></li>
+                        <li><a class="dropdown-item" href="#description"><i class="bi bi-file-earmark-text"></i>
+                            Features</a></li>
+                        <li><a class="dropdown-item" href="#reviews"><i class="bi bi-chat-left-quote"></i> Reviews</a>
+                        </li>
+                        <li><a class="dropdown-item" href="#open-source"><i class="bi bi-github"></i> Open Source</a>
+                        </li>
+                    </ul>
+                </li>
+
             </ul>
         </div>
     </div>
 </nav>
 
 <main class="container-xxl mt-5">
-    <div class="text-center">
-        <h1 class="mb-4">Welcome to DoDoes API</h1>
-        <p class="lead">Access interactive documentation and schema.</p>
+    <section id="intro" class="p-4" style="scroll-margin-top: 55px;">
+        <div class="container-lg">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-md-5 text-center text-md-start">
+                    <h1>
+                        <div class="display-2">DoDoes</div>
+                        <div class="display-5 text-muted">Your tasks. Your API.</div>
+                    </h1>
+                    <p class="lead my-4 text-muted">
+                        DoDoes API is a modern RESTful service for managing to-do tasks, users, and authentication.
+                        Designed for seamless integration with web apps, mobile clients, or automation tools.
+                    </p>
+                    <a href="/docs" class="btn btn-primary btn-lg">Swagger Docs</a>
+                    <a href="/redoc" class="btn btn-secondary btn-lg">Redoc Docs</a>
+                    <a href="/openapi.json" class="btn btn-outline-secondary btn-lg">OpenAPI JSON</a>
+                    <a href="#sidebar" class="d-block mt-3" data-bs-toggle="offcanvas" role="button"
+                       aria-controls="sidebar">What is DoDoes API?</a>
+                </div>
+                <div class="col-md-5 text-center d-none d-md-block">
+                    <span title="Cool, isn't it? This is particles."><img class="img-fluid shadow-lg"
+                                                                          src="/static/assets/connection.jpg"
+                                                                          alt="connection"/></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="benefits" class="bg-light mt-5 p-4" style="scroll-margin-top: 55px;">
+        <div class="container-lg">
+            <div class="text-center">
+                <div class="display-6">Key Benefits</div>
+                <p class="lead text-muted">Discover how DoDoes API streamlines your task management workflow.</p>
+            </div>
+
+            <div class="row my-5 align-items-center justify-content-center g-0">
+                <!-- Create Todos -->
+                <div class="col-8 col-lg-4 col-xl-3">
+                    <div class="card border-0">
+                        <div class="card-body text-center py-4">
+                            <h4 class="card-title">Create To-Dos</h4>
+                            <p class="lead card-subtitle">Define what matters</p>
+                            <p class="display-5 my-4 text-primary fw-bold">Plan</p>
+                            <p class="card-text mx-5 text-muted d-none d-lg-block">
+                                Easily create structured tasks with priorities and deadlines. Whether you're building
+                                apps or automating routines, DoDoes gives you full control over what's next.
+                            </p>
+                            <a href="/docs" class="btn btn-outline-primary btn-lg mt-3">Start Creating</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Discover Features -->
+                <div class="col-9 col-lg-4">
+                    <div class="card border-primary border-2">
+                        <div class="card-header text-center text-primary">Built for Developers</div>
+                        <div class="card-body text-center py-5">
+                            <h4 class="card-title">Explore Features</h4>
+                            <p class="lead card-subtitle">Discover what's possible</p>
+                            <p class="display-4 my-4 text-primary fw-bold">Discover</p>
+                            <p class="card-text mx-5 text-muted d-none d-lg-block">
+                                From authentication to rate limiting and OpenAPI compliance, DoDoes provides everything
+                                you need to build robust task-driven systems - fast and reliably.
+                            </p>
+                            <a href="/redoc" class="btn btn-outline-primary btn-lg mt-3">See Docs</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Manage Tasks -->
+                <div class="col-8 col-lg-4 col-xl-3">
+                    <div class="card border-0">
+                        <div class="card-body text-center py-4">
+                            <h4 class="card-title">Manage Tasks</h4>
+                            <p class="lead card-subtitle">Stay in control</p>
+                            <p class="display-5 my-4 text-primary fw-bold">Organize</p>
+                            <p class="card-text mx-5 text-muted d-none d-lg-block">
+                                Update, complete, and delete tasks through powerful API endpoints. Maintain full
+                                visibility over progress and ensure nothing slips through the cracks.
+                            </p>
+                            <a href="/openapi.json" class="btn btn-outline-primary btn-lg mt-3">Explore Schema</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="description" class="p-4" style="scroll-margin-top: 55px;">
+        <div class="container-md">
+            <div class="text-center">
+                <div class="display-6">More About DoDoes</div>
+                <p class="lead text-muted">See how DoDoes API can support your development workflow and
+                    productivity.</p>
+            </div>
+
+            <div class="row my-5 g-5 justify-content-around align-items-center">
+                <div class="col-6 col-lg-4">
+                    <img class="img-fluid shadow-lg" src="/static/assets/more.jpg" alt="more"/>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="accordion" id="more">
+                        <!-- Creating Todos -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading-1">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#content-1" aria-expanded="true" aria-controls="content-1">
+                                    Creating To-Dos
+                                </button>
+                            </h2>
+                            <div id="content-1" class="accordion-collapse collapse show" aria-labelledby="heading-1"
+                                 data-bs-parent="#more">
+                                <div class="accordion-body">
+                                    Define tasks with deadlines, priorities, and completion status via a clear and
+                                    intuitive API interface.
+                                    <ul>
+                                        <li>Create structured to-dos with ease</li>
+                                        <li>Use UUIDs to uniquely track and manage each item</li>
+                                        <li>Store and query tasks securely using token-based authentication</li>
+                                        <li><strong>Start planning programmatically and integrate with your app or
+                                            workflow today.</strong></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Discovering Capabilities -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading-2">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#content-2" aria-expanded="false" aria-controls="content-2">
+                                    Exploring API Capabilities
+                                </button>
+                            </h2>
+                            <div id="content-2" class="accordion-collapse collapse" aria-labelledby="heading-2"
+                                 data-bs-parent="#more">
+                                <div class="accordion-body">
+                                    Learn everything you can do with DoDoes API using built-in documentation and live
+                                    test tools.
+                                    <ul>
+                                        <li>Access Swagger and ReDoc for interactive API exploration</li>
+                                        <li>Authenticate, create users, and secure endpoints</li>
+                                        <li>Browse the OpenAPI schema to automate client generation</li>
+                                        <li><strong>Get started quickly with complete and browsable docs.</strong></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Managing Tasks -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading-3">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#content-3" aria-expanded="false" aria-controls="content-3">
+                                    Managing Your Tasks
+                                </button>
+                            </h2>
+                            <div id="content-3" class="accordion-collapse collapse" aria-labelledby="heading-3"
+                                 data-bs-parent="#more">
+                                <div class="accordion-body">
+                                    Keep control over your todos from start to finish using secure and flexible
+                                    endpoints.
+                                    <ul>
+                                        <li>Update and complete tasks as your project evolves</li>
+                                        <li>Delete, archive, or filter to-dos for better visibility</li>
+                                        <li>Use rate-limiting and validation to keep APIs stable and secure</li>
+                                        <li><strong>Maintain clarity and consistency across your project
+                                            lifecycle.</strong></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section id="reviews" class="bg-light p-4" style="scroll-margin-top: 55px;">
+        <div class="container-lg">
+            <div class="text-center">
+                <div class="display-6">
+                    <i class="bi bi-stars"></i> Reviews
+                </div>
+                <p class="lead text-muted">What developers are saying about DoDoes API...</p>
+            </div>
+
+            <div class="row justify-content-center my-5">
+                <div class="col-lg-8">
+                    <div class="list-group">
+                        <!-- Niewiaro -->
+                        <div class="list-group-item py-3">
+                            <div class="pb-2 text-warning">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <h5 class="mb-1">FastAPI is surprisingly pleasant to work with</h5>
+                            <p class="mb-1">As someone who's worked with backend frameworks, I was genuinely
+                                impressed by FastAPI. It's fast, elegant, and extremely developer-friendly. The
+                                automatic docs, request validation, and Pydantic integration make building APIs feel
+                                almost effortless. DoDoes uses FastAPI just right - it's modern, clean, and really
+                                satisfying to work with.</p>
+                            <small>Review by Niewiaro</small>
+                        </div>
+
+                        <!-- Jakub -->
+                        <div class="list-group-item py-3">
+                            <div class="pb-2 text-warning">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                            </div>
+                            <h5 class="mb-1">Still holding love for Django REST Framework</h5>
+                            <p class="mb-1">Even though DoDoes API impressed me with FastAPI's performance and async
+                                support, I'll admit it - my heart still beats for Django REST Framework. The ORM,
+                                class-based views, and ecosystem are unmatched. That said, DoDoes proves that if you
+                                need a lightweight and blazing-fast API, FastAPI can be the perfect tool for the
+                                job.</p>
+                            <small>Review by Jakub</small>
+                        </div>
+
+                        <!-- Kuba -->
+                        <div class="list-group-item py-3">
+                            <div class="pb-2 text-warning">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <h5 class="mb-1">A simple and clean API, just how it should be</h5>
+                            <p class="mb-1">What I like most about DoDoes API is how it gets out of your way. The
+                                endpoints are predictable, the docs are interactive, and everything works as you'd
+                                expect. Whether you're building a todo app or integrating it with your own frontend,
+                                this API keeps things efficient. It could use more advanced filtering, but for most use
+                                cases, it's more than enough.</p>
+                            <small>Review by Kuba</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="open-source" class="p-4" style="scroll-margin-top: 55px;">
+        <div class="container-lg">
+            <div class="text-center">
+                <div class="display-6">Open Source</div>
+                <p class="lead text-muted">Transparent by design - nothing to hide.</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <p class="text-muted my-4">
+                        Open source is more than just a license - it's a philosophy. It means the source code is
+                        publicly available for anyone to inspect, improve, and contribute to. This fosters
+                        collaboration, accelerates innovation, and enhances security.
+                    </p>
+                    <p class="text-muted my-4">
+                        The DoDoes API is fully open source. You're welcome to explore the codebase, track development,
+                        report issues, or even submit your own improvements. Join us on GitHub and help make it even
+                        better.
+                    </p>
+
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#github-modal">
+                        View the code
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="modal fade" id="github-modal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-title">
+                        <i class="bi bi-github"></i> GitHub
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <ul class="list-group list-group-flush text-center">
+                        <li class="list-group-item p-3">
+                            <a href="https://github.com/Niewiaro" class="lead" target="_blank">
+                                <i class="bi bi-github"></i> GitHub Profile
+                            </a>
+                        </li>
+                        <li class="list-group-item p-3">
+                            <a href="https://github.com/Niewiaro/dodoes" class="lead" target="_blank">
+                                <i class="bi bi-code-slash"></i> DoDoes Repository
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="sidebar"
+         aria-labelledby="sidebar-label">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="sidebar-label">What is DoDoes API?</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <p>
+                        <strong>DoDoes API</strong> is a modern, developer-first interface for managing tasks and
+                        to-dos.
+                    </p>
+                </li>
+                <li class="list-group-item">
+                    <p>
+                        You can create, update, organize, and complete your tasks using clean RESTful endpoints, with
+                        full support for user accounts, priorities, deadlines, and more.
+                    </p>
+                </li>
+                <li class="list-group-item">
+                    <p>
+                        Built with FastAPI, it offers automatic documentation, token-based authentication, and a clear
+                        data structure designed for productivity apps, automation tools, or personal dashboards.
+                    </p>
+                </li>
+                <li class="list-group-item">
+                    <figure class="text-center">
+                        <blockquote class="blockquote">
+                            <strong>Track smarter. Build faster. Focus better.</strong>
+                        </blockquote>
+                        <figcaption class="blockquote-footer">
+                            with <cite title="by Niewiaro">DoDoes API</cite>
+                        </figcaption>
+                    </figure>
+                </li>
+            </ul>
+        </div>
+    </div>
+
 </main>
 
 <footer class="bg-dark text-light text-center py-3 mt-5">
