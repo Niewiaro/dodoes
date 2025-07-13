@@ -19,10 +19,11 @@
 2. [Environment Configuration](#environment-configuration)
 3. [MoSCoW Analysis](#moscow-analysis)
 4. [API Diagram](#api-diagram)
+5. [CI Pipeline](#ci-pipeline)
 
 ---
 
-## ⚙️ Installation
+## ⚙️ Installation <a name="installation"></a>
 
 ```bash
 docker compose up --build
@@ -32,7 +33,7 @@ docker compose up --build
 
 ---
 
-## 🔐 Environment Configuration
+## 🔐 Environment Configuration <a name="environment-configuration"></a>
 
 Create a `.env` file in the project root. Example content:
 
@@ -97,6 +98,73 @@ graph TD
 ```
 
 > More detailed documentation is available in the [Wiki](../../wiki).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+---
+
+## ⚙️ CI Pipeline <a name="ci-pipeline"></a>
+
+The project uses **GitHub Actions** to ensure code quality and correctness across Python versions:
+
+* ✅ Runs on push and PR to `master`
+* 🧪 Supports Python `3.12` and `3.13`
+* 🧼 Lints code with **Ruff**
+* 🧪 Runs tests using **Pytest**
+
+### `.github/workflows/ci.yml`:
+
+```yaml
+name: FastAPI CI
+
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      SECRET_KEY: test-secret-key
+      DATABASE_URL: sqlite:///./todosapp.db
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        python-version: [3.12, 3.13]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Cache pip
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('src/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+          
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pytest ruff
+
+    - name: Lint with Ruff
+      working-directory: src
+      run: ruff check .
+
+    - name: Run tests with Pytest
+      run: pytest
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
