@@ -1,8 +1,9 @@
 from fastapi.testclient import TestClient
+
 from src.auth.model import RegisterUserRequest
 
 
-def test_register_and_login_flow(client: TestClient):
+def test_register_and_login_flow(client: TestClient) -> None:
     # Test registration
     register_data = RegisterUserRequest(
         email="test.user@example.com",
@@ -29,7 +30,7 @@ def test_register_and_login_flow(client: TestClient):
     assert token_data["token_type"] == "bearer"
 
 
-def test_login_failures(client: TestClient):
+def test_login_failures(client: TestClient) -> None:
     # Test login with non-existent user
     response = client.post(
         "/auth/login",
@@ -53,7 +54,7 @@ def test_login_failures(client: TestClient):
     assert response.status_code == 401
 
 
-def test_rate_limiting(client: TestClient):
+def test_rate_limiting(client: TestClient) -> None:
     # Test rate limiting on registration
     for _ in range(6):  # Attempt 6 registrations (limit is 5/hour)
         response = client.post(
