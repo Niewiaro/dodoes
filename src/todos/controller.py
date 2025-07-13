@@ -8,7 +8,7 @@ from . import service
 from ..auth.service import CurrentUser
 
 router = APIRouter(
-    prefix="/todos",
+    prefix="/tasks",
     tags=["Todos"]
 )
 
