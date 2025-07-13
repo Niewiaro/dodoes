@@ -49,6 +49,10 @@ async def serve_root() -> str:
     with open("static/index.html") as f:
         return f.read()
 
-Base.metadata.create_all(bind=engine)
+"""
+Only uncomment below to create new tables, 
+otherwise the e2e tests will fail if not connected
+"""
+# Base.metadata.create_all(bind=engine)
 
 register_routes(app)
