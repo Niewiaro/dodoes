@@ -61,6 +61,18 @@ def test_password_change_validation(client: TestClient, auth_headers) -> None:
     )
     assert response.status_code == 400
 
+    # Test password not changed if new password is the same as current
+    response = client.put(
+        "/users/change-password",
+        headers=auth_headers,
+        json={
+            "current_password": "testpassword123",
+            "new_password": "testpassword123",
+            "new_password_confirm": "testpassword123"
+        }
+    )
+    assert response.status_code == 400
+
 
 def test_user_endpoints_authorization(client: TestClient) -> None:
     # Try accessing user endpoints without auth
