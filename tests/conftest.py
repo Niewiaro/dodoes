@@ -14,9 +14,9 @@ from src.rate_limiting import limiter
 
 
 @pytest.fixture(scope="function")
-def db_session():
-    # Use a unique database URL for testing
-    SQLALCHEMY_DATABASE_URL = "sqlite:///:memory:"
+def db_session(tmp_path):
+    DB_PATH = tmp_path / "test.db"
+    SQLALCHEMY_DATABASE_URL = f"sqlite:///{DB_PATH}"
     engine = create_engine(
         SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
     )
