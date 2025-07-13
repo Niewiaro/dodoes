@@ -3,8 +3,8 @@ import os
 
 from dotenv import load_dotenv
 from fastapi import FastAPI
-from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
 
 from .api import register_routes
 from .database.core import engine, Base
@@ -43,16 +43,18 @@ Ideal for integration into frontend applications or as a standalone backend.
 # Mount only static files
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
+
 # Serve index.html manually for "/"
 @app.get("/", response_class=HTMLResponse)
 async def serve_root() -> str:
     with open("static/index.html") as f:
         return f.read()
 
+
 """
 Only uncomment below to create new tables, 
 otherwise the e2e tests will fail if not connected
 """
-# Base.metadata.create_all(bind=engine)
+Base.metadata.create_all(bind=engine)
 
 register_routes(app)
